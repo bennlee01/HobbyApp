@@ -1,10 +1,60 @@
-﻿
-@{
-    ViewData["Title"] = "My Hobby";
+﻿@{
+    ViewData["Title"] = "Hockey Drills and Lessons";
 }
-<h1>Welcome to My Hobby Page</h1>
-<img src="/images/hobby1.jpg" alt="Hobby Image 1">
-<img src="/images/hobby2.jpg" alt="Hobby Image 2">
-<p>This page is all about my favorite hobby...</p>
-<footer>&copy; 2025 Your Name</footer>
-<a href="/Home/Calculator">Go to Calculator</a>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="~/hockeystick.jpg?v=2" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <!-- Main Wrapper to apply Flexbox Layout -->
+    <div class="page-wrapper">
+        <!-- Header Section -->
+        <header>
+            <h1>Hockey Drills and Lessons</h1>
+            <nav>
+                <a href="/Home/Index">Home</a> | 
+                <a href="/Home/Calculator">Hockey Drills Calculator</a>
+            </nav>
+        </header>
+
+        <!-- Content Section that takes up remaining space -->
+        <div class="content">
+            <h2>Welcome to My Hockey Lesson Page</h2>
+
+            <p>I grew up in California and developed a love for hockey at a young age. I joined local recreational leagues and clubs, where I spent countless hours at the rink, building my skills and deepening my passion for the game.</p>
+
+            <p>Later, I had the opportunity to serve my mission in Minnesota and Canada, where I experienced firsthand just how much hockey means to the people there. From outdoor rinks to packed arenas, I saw the dedication and enthusiasm that make these communities so special. Being surrounded by such a rich hockey culture gave me a new appreciation for the sport and the way it brings people together.</p>
+
+            <p>Now, I’m passionate about teaching the fundamentals and helping beginners build confidence on the ice. No matter what part of your game you want to improve, I’m here to help!</p>
+            <h3>What You Will Learn:</h3>
+            <ul>
+                <li>Basic Ice Skating</li>
+                <li>Puck Handling</li>
+                <li>Passing Drills</li>
+                <li>Shooting Drills</li>
+            </ul>
+
+            <!-- Image Section -->
+            <div class="image-gallery">
+                <img src="~/images/hobby1.jpg" alt="Hockey Image 1" class="img-fluid" />
+                <img src="~/images/hobby2.jpg" alt="Hockey Image 2" class="img-fluid" />
+            </div>
+        </div>
+
+        <!-- Footer Section, fixed at the bottom -->
+        <footer>
+            <p>&copy; 2025 - Built by Ben Lee</p>
+            <nav>
+                <a href="/Home/Privacy">Privacy</a> <!-- Privacy link placed in the footer -->
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

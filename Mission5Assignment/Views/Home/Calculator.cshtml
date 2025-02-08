@@ -1,12 +1,91 @@
-
 @{
-    ViewData["Title"] = "Tutoring Cost Calculator";
+    ViewData["Title"] = "Hockey Drills Calculator";
 }
-<h1>Tutoring Cost Calculator</h1>
-<label for="hours">Enter hours:</label>
-<input type="number" id="hours" min="1">
-<p>Rate: <span id="rate">$30</span>/hour</p>
-<button onclick="calculateCost()">Calculate</button>
-<p>Total Cost: <span id="total"></span></p>
-<a href="/Home/Index">Back to Home</a>
-<script src="/js/calculator.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="~/hockeystick.jpg?v=2" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <!-- Main Wrapper to apply Flexbox Layout -->
+    <div class="page-wrapper">
+        <!-- Header Section -->
+        <header>
+            <h1>Hockey Drills Calculator</h1>
+            <nav>
+                <a href="/Home/Index">Back to Home</a>
+            </nav>
+        </header>
+
+        <!-- Content Section that takes up remaining space -->
+        <div class="content">
+            <h2>Calculate the Cost for Your Hockey Lesson</h2>
+
+            <!-- Description of what the lessons cover -->
+            <p>
+                Your hockey lesson includes fundamental skills such as:
+            </p>
+            <ul>
+                <li>Basic Ice Skating</li>
+                <li>Puck Handling</li>
+                <li>Passing Drills</li>
+                <li>Shooting Drills</li>
+            </ul>
+
+            <p>These lessons are designed to improve your skating ability and understanding of the game, no matter your current skill level!</p>
+
+            <form id="calculatorForm">
+                <label for="hours">Number of Hours:</label>
+                <input type="number" id="hours" name="hours" min="1" placeholder="Enter hours" required />
+                <br><br>
+
+                <label for="rate">Rate per Hour:</label>
+                <input type="text" id="rate" name="rate" value="30" readonly /> <!-- Non-editable box for rate -->
+                <br><br>
+
+                <button type="button" id="calculateButton">Calculate Total</button>
+            </form>
+
+            <h3>Total Cost: <span id="totalCost">$0.00</span></h3>
+        </div>
+
+        <!-- Footer Section, fixed at the bottom -->
+        <footer>
+            <p>&copy; 2025 - Built by Ben Lee</p>
+            <nav>
+                <a href="/Home/Privacy">Privacy</a> <!-- Privacy link placed in the footer -->
+            </nav>
+        </footer>
+    </div>
+
+    <!-- jQuery and JavaScript Logic -->
+    <script>
+        $(document).ready(function () {
+            // Button click event to calculate the total cost
+            $('#calculateButton').click(function () {
+                var hours = parseFloat($('#hours').val()); // Get the number of hours entered by user
+                var rate = parseFloat($('#rate').val());  // Get the rate per hour (fixed)
+
+                // Validation to ensure hours is a positive number
+                if (isNaN(hours) || hours <= 0) {
+                    alert("Please enter a valid, positive number of hours.");
+                    $('#totalCost').text("$0.00"); // Reset total cost if invalid input
+                    return; // Exit function if input is invalid
+                }
+
+                // Calculate total cost
+                var total = hours * rate;
+
+                // Display the total cost with the USD symbol and two decimal places
+                $('#totalCost').text("$" + total.toFixed(2));
+            });
+        });
+    </script>
+</body>
+</html>
